@@ -1,0 +1,2 @@
+# HolisticWare.DotNetNew.XamarinAndroidMavenBindingsProjectsStructureTemplate
+HolisticWare.DotNetNew.XamarinAndroidMavenBindingsProjectsStructureTemplate
