@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+-->
+<package>
+  <metadata>
+    <id>HolisticWare.DotNetNew.XamarinAndroidMavenBindingsProjectsStructureTemplate.CSharp</id>
+    <version>0.0.0</version>
+    <description>
+      Creates folder structure/layout for Xamarin cross-platform libraries and bindings
+    </description>
+    <authors>moljac Miljenko Cvjetko Mel Microsoft / Xamarin / HolisticWare</authors>
+    <!--
+    <icon>docs\HolisticWare.svg.png</icon>
+    <project>
+      https://github.com/holisticware-xamarin/HolisticWare.DotNetNew.XamarinProjectsStructureTemplate
+    </project>
+    -->
+    <iconUrl>
+      https://github.com/moljac/HolisticWare.Branding/blob/master/pngs/holisticware/component/HolisticWare.svg.512x512.png
+    </iconUrl>
+    <projectUrl>
+      https://github.com/holisticware-xamarin/HolisticWare.DotNetNew.XamarinProjectsStructureTemplate
+    </projectUrl>
+    <license type="expression">MIT</license>
+    <packageTypes>
+      <packageType name="Template" />
+    </packageTypes>
+  </metadata>
+  <files>
+    <file src="Content/**" target="" />
+  </files>
+
+</package>
