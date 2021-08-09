@@ -7,7 +7,10 @@ run this
 	dotnet cake
 */
 #addin nuget:?package=Cake.FileHelpers
+// #addin nuget:?package=Cake.FileHelpers&version=4.0.1
 // #addin "MagicChunks"
+
+string nuget_id = "HolisticWare.DotNetNew.XamarinAndroidMavenBindingsProjectsStructureTemplate.CSharp";
 
 FilePathCollection files = null;
 files = GetFiles("./*.nupkg");
@@ -15,6 +18,7 @@ DeleteFiles(files);
 
 string[] directories = new string[]
 {
+	"./Content/.vs/",
 	"./Content/tools/",
 	"./output",
 };
@@ -58,15 +62,11 @@ FilePath file_source = GetFiles ($"./*.nuspec").ToList () [0];
 Information($"file = {file_source} : ");
 Information($"{FileReadText(file_source)}");
 FilePath file_destination = new FilePath
-(
-	file_source.FullPath.Replace
-							(
-								"HolisticWare.DotNetNew.XamarinAndroidMavenBindingsProjectsStructureTemplate.CSharp",
-								$"new.tmp.{version}"
-							)
-);
+									(
+										file_source.FullPath.Replace(nuget_id, $"new.tmp.{version}")
+									);
 Information($"file = {file_destination} : ");
-Information($"Copy");
+	Information($"Copy");
 Information($"	file_source 		= {file_source} : ");
 Information($"	file_destination 	= {file_destination} : ");
 CopyFile(file_source, file_destination);
@@ -109,7 +109,7 @@ int exit_code = StartProcess
 	"nuget", 
 	new ProcessSettings
 	{ 
-		Arguments = $"pack new.tmp.{version}.nuspec -OutputDirectory ./output/" 
+		Arguments = $"pack new.tmp.{version}.nuspec -OutputDirectory ./output/nuget/" 
 	}
 );
 
@@ -124,18 +124,18 @@ Information("Exit code: {0}", exit_code);
 // 						;
 // NuGetPack
 // (
-// 	"./nuget/HolisticWare.DotNetNew.XamarinAndroidMavenBindingsProjectsStructureTemplate.CSharp.nuspec",
+// 	$"./nuget/{nuget_id}.nuspec",
 // 	settings
 // );
 
 files = GetFiles("./new.tmp.*.nuspec");
 DeleteFiles(files);
 
-string nupkg = GetFiles("./output/HolisticWare.DotNetNew.XamarinAndroidMavenBindingsProjectsStructureTemplate.CSharp.*.nupkg")
-					.FirstOrDefault()
-					.ToString()
-					;
+string nupkg = GetFiles($"./output/nuget/{nuget_id}.*.nupkg")
+								.FirstOrDefault()
+								.ToString()
+								;
 
 string zip = nupkg.Replace("nupkg", "zip");
 CopyFile(nupkg, zip);
-Unzip(zip, "./output/nuget-structure/");
+Unzip(zip, "./output/nuget/nuget-structure/");
