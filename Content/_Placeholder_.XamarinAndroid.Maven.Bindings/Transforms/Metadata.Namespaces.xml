@@ -1,10 +1,51 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <metadata>
-	<!--
-  This sample removes the class: android.support.v4.content.AsyncTaskLoader.LoadTask:
-  <remove-node path="/api/package[@name='android.support.v4.content']/class[@name='AsyncTaskLoader.LoadTask']" />
-  
-  This sample removes the method: android.support.v4.content.CursorLoader.loadInBackground:
-  <remove-node path="/api/package[@name='android.support.v4.content']/class[@name='CursorLoader']/method[@name='loadInBackground']" />
-  -->
+    <!--
+    https://docs.microsoft.com/en-us/xamarin/android/platform/binding-java-library/
+
+    https://docs.microsoft.com/en-us/xamarin/android/platform/binding-java-library/binding-a-jar
+
+    https://docs.microsoft.com/en-us/xamarin/android/platform/binding-java-library/binding-an-aar
+
+    https://docs.microsoft.com/en-us/xamarin/android/platform/binding-java-library/binding-a-library-project
+
+    https://docs.microsoft.com/en-us/xamarin/android/platform/binding-java-library/customizing-bindings/
+
+    https://docs.microsoft.com/en-us/xamarin/android/platform/binding-java-library/customizing-bindings/java-bindings-metadata
+
+    https://docs.microsoft.com/en-us/xamarin/android/platform/binding-java-library/customizing-bindings/naming-parameters-with-javadoc
+
+    https://docs.microsoft.com/en-us/xamarin/android/platform/binding-java-library/troubleshooting-bindings
+
+    https://github.com/xamarin/java.interop/wiki/Troubleshooting-Android-Bindings-Issues
+
+    https://docs.microsoft.com/en-us/xamarin/android/platform/binding-kotlin-library/
+
+    https://docs.microsoft.com/en-us/xamarin/android/platform/binding-kotlin-library/walkthrough
+
+    https://liudeyun.net/Troubleshooting-for-Xamarin-Android-binding-project/
+
+    https://dotnetdevaddict.co.za/tag/android-binding-library/
+
+    https://github.com/mattleibow/Xamarin.Android.Bindings.Generators
+
+    https://johnthiriet.com/xamarin-android-binding-library-preparation/
+
+    https://gist.github.com/JonDouglas/dda6d8ace7d071b0e8cb
+
+    https://www.xamarinhelp.com/creating-xamarin-android-binding-library/
+
+    https://insanelab.com/blog/mobile-development/advanced-xamarin-bindings-android-case-study/
+    
+    -->
+
+    <!--
+    <attr 
+        path="/api/package[@name='package']" 
+        name="managedName"
+        >
+        Package
+    </attr>
+    -->
+
 </metadata>

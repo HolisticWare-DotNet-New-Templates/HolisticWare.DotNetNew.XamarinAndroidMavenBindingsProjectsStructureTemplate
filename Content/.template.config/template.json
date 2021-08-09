@@ -36,6 +36,45 @@
     //      -   code
     //      -   text
     "sourceName": "_Placeholder_",
+    "defaultName": "Maven.Bindings.XamarinAndroid",
+    "symbols": 
+    {
+        "NugetId" : 
+        {
+          "type": "parameter",
+          "defaultValue": "Nuget.Id.Package",
+          "replaces":"{NugetId}",
+          "isRequired": true
+        },
+        "NugetVersion" : 
+        {
+          "type": "parameter",
+          "defaultValue": "1.0.0.0",
+          "replaces":"{NugetVersion}",
+          "isRequired": true
+        },
+        "MavenGroupId" : 
+        {
+          "type": "parameter",
+          "defaultValue": "com.google",
+          "replaces":"{MavenGroupId}",
+          "isRequired": true
+        },
+        "MavenArtifactId" : 
+        {
+          "type": "parameter",
+          "defaultValue": "artifact",
+          "replaces":"{MavenArtifactId}",
+          "isRequired": true
+        },
+        "MavenArtifactVersion" : 
+        {
+          "type": "parameter",
+          "defaultValue": "1.1.0",
+          "replaces":"{MavenArtifactVersion}",
+          "isRequired": true
+        }        
+    }
     // placeholderFilename (optional)
     // A filename that will be completely ignored expect to indicate that its containing
     // directory should be copied. This allows creation of empty directory in the created

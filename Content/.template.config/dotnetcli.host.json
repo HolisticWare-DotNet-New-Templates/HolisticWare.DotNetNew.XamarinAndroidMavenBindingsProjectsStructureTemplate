@@ -1,0 +1,31 @@
+{
+	"$schema": "http://json.schemastore.org/dotnetcli.host",
+	"symbolInfo": 
+    {
+		"NugetId": 
+        {
+			"longName": "NugetId",
+			"shortName": "ni"
+		},
+		"NugetVersion": 
+        {
+			"longName": "NugetVersion",
+			"shortName": "nv"
+		},
+		"MavenGroupId": 
+        {
+			"longName": "MavenGroupId",
+			"shortName": "mg"
+		},
+		"MavenArtifactId": 
+        {
+			"longName": "MavenArtifactId",
+			"shortName": "ma"
+		},
+		"MavenArtifactVersion": 
+        {
+			"longName": "MavenArtifactVersion",
+			"shortName": "ma"
+		}		
+	}
+}

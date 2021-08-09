@@ -1,19 +1,57 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <enum-field-mappings>
-	<!--
-  This example converts the constants Fragment_id, Fragment_name,
-  and Fragment_tag from android.support.v4.app.FragmentActivity.FragmentTag
-  to an enum called Android.Support.V4.App.FragmentTagType with values
-  Id, Name, and Tag.
-  
-  <mapping clr-enum-type="Android.Support.V4.App.FragmentTagType" jni-class="android/support/v4/app/FragmentActivity$FragmentTag">
-    <field clr-name="Id" jni-name="Fragment_id" value="1" />
-    <field clr-name="Name" jni-name="Fragment_name" value="0" />
-    <field clr-name="Tag" jni-name="Fragment_tag" value="2" />
-  </type>
+    <!--
+    https://docs.microsoft.com/en-us/xamarin/android/platform/binding-java-library/
 
-  Notes:
-  - An optional "bitfield" attribute marks the enum type with [Flags].
-  - For Java interfaces, use "jni-interface" attribute instead of "jni-class" attribute.
-  -->
+    https://docs.microsoft.com/en-us/xamarin/android/platform/binding-java-library/binding-a-jar
+
+    https://docs.microsoft.com/en-us/xamarin/android/platform/binding-java-library/binding-an-aar
+
+    https://docs.microsoft.com/en-us/xamarin/android/platform/binding-java-library/binding-a-library-project
+
+    https://docs.microsoft.com/en-us/xamarin/android/platform/binding-java-library/customizing-bindings/
+
+    https://docs.microsoft.com/en-us/xamarin/android/platform/binding-java-library/customizing-bindings/java-bindings-metadata
+
+    https://docs.microsoft.com/en-us/xamarin/android/platform/binding-java-library/customizing-bindings/naming-parameters-with-javadoc
+
+    https://docs.microsoft.com/en-us/xamarin/android/platform/binding-java-library/troubleshooting-bindings
+
+    https://github.com/xamarin/java.interop/wiki/Troubleshooting-Android-Bindings-Issues
+
+    https://docs.microsoft.com/en-us/xamarin/android/platform/binding-kotlin-library/
+
+    https://docs.microsoft.com/en-us/xamarin/android/platform/binding-kotlin-library/walkthrough
+
+    https://liudeyun.net/Troubleshooting-for-Xamarin-Android-binding-project/
+
+    https://dotnetdevaddict.co.za/tag/android-binding-library/
+
+    https://github.com/mattleibow/Xamarin.Android.Bindings.Generators
+
+    https://johnthiriet.com/xamarin-android-binding-library-preparation/
+
+    https://gist.github.com/JonDouglas/dda6d8ace7d071b0e8cb
+
+    https://www.xamarinhelp.com/creating-xamarin-android-binding-library/
+
+    https://insanelab.com/blog/mobile-development/advanced-xamarin-bindings-android-case-study/
+    
+    -->
+	  <!--
+    This example converts the constants Fragment_id, Fragment_name,
+    and Fragment_tag from android.support.v4.app.FragmentActivity.FragmentTag
+    to an enum called Android.Support.V4.App.FragmentTagType with values
+    Id, Name, and Tag.
+  
+    <mapping clr-enum-type="Android.Support.V4.App.FragmentTagType" jni-class="android/support/v4/app/FragmentActivity$FragmentTag">
+      <field clr-name="Id" jni-name="Fragment_id" value="1" />
+      <field clr-name="Name" jni-name="Fragment_name" value="0" />
+      <field clr-name="Tag" jni-name="Fragment_tag" value="2" />
+    </type>
+
+    Notes:
+    - An optional "bitfield" attribute marks the enum type with [Flags].
+    - For Java interfaces, use "jni-interface" attribute instead of "jni-class" attribute.
+    -->
 </enum-field-mappings>

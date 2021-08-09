@@ -1,19 +1,76 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <enum-method-mappings>
-	<!--
-  This example changes the Java method:
-    android.support.v4.app.Fragment.SavedState.writeToParcel (int flags)
-  to be:
-    android.support.v4.app.Fragment.SavedState.writeToParcel (Android.OS.ParcelableWriteFlags flags)
-  when bound in C#.
+    <!--
+    https://docs.microsoft.com/en-us/xamarin/android/platform/binding-java-library/
 
-  <mapping jni-class="android/support/v4/app/Fragment.SavedState">
-    <method jni-name="writeToParcel" parameter="flags" clr-enum-type="Android.OS.ParcelableWriteFlags" />
-  </mapping>
+    https://docs.microsoft.com/en-us/xamarin/android/platform/binding-java-library/binding-a-jar
 
-  Notes:
-  - For Java interfaces, use "jni-interface" attribute instead of "jni-class" attribute.
-  - To change the type of the return value, use "return" as the parameter name.
-  - The parameter names will be p0, p1, ... unless you provide JavaDoc file in the project.
-  -->
+    https://docs.microsoft.com/en-us/xamarin/android/platform/binding-java-library/binding-an-aar
+
+    https://docs.microsoft.com/en-us/xamarin/android/platform/binding-java-library/binding-a-library-project
+
+    https://docs.microsoft.com/en-us/xamarin/android/platform/binding-java-library/customizing-bindings/
+
+    https://docs.microsoft.com/en-us/xamarin/android/platform/binding-java-library/customizing-bindings/java-bindings-metadata
+
+    https://docs.microsoft.com/en-us/xamarin/android/platform/binding-java-library/customizing-bindings/naming-parameters-with-javadoc
+
+    https://docs.microsoft.com/en-us/xamarin/android/platform/binding-java-library/troubleshooting-bindings
+
+    https://github.com/xamarin/java.interop/wiki/Troubleshooting-Android-Bindings-Issues
+
+    https://docs.microsoft.com/en-us/xamarin/android/platform/binding-kotlin-library/
+
+    https://docs.microsoft.com/en-us/xamarin/android/platform/binding-kotlin-library/walkthrough
+
+    https://liudeyun.net/Troubleshooting-for-Xamarin-Android-binding-project/
+
+    https://dotnetdevaddict.co.za/tag/android-binding-library/
+
+    https://github.com/mattleibow/Xamarin.Android.Bindings.Generators
+
+    https://johnthiriet.com/xamarin-android-binding-library-preparation/
+
+    https://gist.github.com/JonDouglas/dda6d8ace7d071b0e8cb
+
+    https://www.xamarinhelp.com/creating-xamarin-android-binding-library/
+
+    https://insanelab.com/blog/mobile-development/advanced-xamarin-bindings-android-case-study/
+    
+    -->
+
+	  <!--
+    This example changes the Java method:
+      android.support.v4.app.Fragment.SavedState.writeToParcel (int flags)
+    to be:
+      android.support.v4.app.Fragment.SavedState.writeToParcel (Android.OS.ParcelableWriteFlags flags)
+    when bound in C#.
+
+    <mapping jni-class="android/support/v4/app/Fragment.SavedState">
+      <method jni-name="writeToParcel" parameter="flags" clr-enum-type="Android.OS.ParcelableWriteFlags" />
+    </mapping>
+
+    Notes:
+      - For Java interfaces, use "jni-interface" attribute instead of "jni-class" attribute.
+      - To change the type of the return value, use "return" as the parameter name.
+      - The parameter names will be p0, p1, ... unless you provide JavaDoc file in the project.
+    -->
+
+
+
+    <!--
+    ./generated/androidx.core.core/obj/Debug/monoandroid9.0/generated/src/AndroidX.Core.Internal.View.ISupportMenuItem.cs(77,77): 
+    Error CS0535: 
+        'ISupportMenuItemInvoker' 
+    does not implement interface member 
+        'IMenuItem.SetShowAsAction(ShowAsAction)'
+
+    int to enum mappings
+
+    <mapping jni-interface="androidx/core/internal/view/SupportMenuItem">
+        <method jni-name="setShowAsAction" parameter="actionEnum" clr-enum-type="Android.Views.ShowAsAction" />
+        <method jni-name="setShowAsActionFlags" parameter="actionEnum" clr-enum-type="Android.Views.ShowAsAction" />
+    </mapping>
+    -->
+
 </enum-method-mappings>

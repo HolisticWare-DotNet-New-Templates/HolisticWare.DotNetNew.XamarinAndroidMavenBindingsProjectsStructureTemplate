@@ -1,16 +1,127 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <metadata>
     <!--
-    Cheat shieat (TODO: see if this has fooled polycheck):
+    https://docs.microsoft.com/en-us/xamarin/android/platform/binding-java-library/
+
+    https://docs.microsoft.com/en-us/xamarin/android/platform/binding-java-library/binding-a-jar
+
+    https://docs.microsoft.com/en-us/xamarin/android/platform/binding-java-library/binding-an-aar
+
+    https://docs.microsoft.com/en-us/xamarin/android/platform/binding-java-library/binding-a-library-project
+
+    https://docs.microsoft.com/en-us/xamarin/android/platform/binding-java-library/customizing-bindings/
+
+    https://docs.microsoft.com/en-us/xamarin/android/platform/binding-java-library/customizing-bindings/java-bindings-metadata
+
+    https://docs.microsoft.com/en-us/xamarin/android/platform/binding-java-library/customizing-bindings/naming-parameters-with-javadoc
+
+    https://docs.microsoft.com/en-us/xamarin/android/platform/binding-java-library/troubleshooting-bindings
+
+    https://github.com/xamarin/java.interop/wiki/Troubleshooting-Android-Bindings-Issues
+
+    https://docs.microsoft.com/en-us/xamarin/android/platform/binding-kotlin-library/
+
+    https://docs.microsoft.com/en-us/xamarin/android/platform/binding-kotlin-library/walkthrough
+
+    https://liudeyun.net/Troubleshooting-for-Xamarin-Android-binding-project/
+
+    https://dotnetdevaddict.co.za/tag/android-binding-library/
+
+    https://github.com/mattleibow/Xamarin.Android.Bindings.Generators
+
+    https://johnthiriet.com/xamarin-android-binding-library-preparation/
+
+    https://gist.github.com/JonDouglas/dda6d8ace7d071b0e8cb
+
+    https://www.xamarinhelp.com/creating-xamarin-android-binding-library/
+
+    https://insanelab.com/blog/mobile-development/advanced-xamarin-bindings-android-case-study/
     
-    Remove class: android.support.v4.content.AsyncTaskLoader.LoadTask:
-        <remove-node 
-            path="/api/package[@name='android.support.v4.content']/class[@name='AsyncTaskLoader.LoadTask']" 
-            />
-  
-    Remove method: android.support.v4.content.CursorLoader.loadInBackground:
-        <remove-node 
-            path="/api/package[@name='android.support.v4.content']/class[@name='CursorLoader']/method[@name='loadInBackground']" 
-            />
     -->
+
+	<!--
+    This sample removes the class: android.support.v4.content.AsyncTaskLoader.LoadTask:
+    <remove-node 
+      path="/api/package[@name='android.support.v4.content']/class[@name='AsyncTaskLoader.LoadTask']" 
+      />
+    -->
+  
+    <!--
+    This sample removes the method: android.support.v4.content.CursorLoader.loadInBackground:
+    <remove-node 
+      path="/api/package[@name='android.support.v4.content']/class[@name='CursorLoader']/method[@name='loadInBackground']" 
+      />
+    -->
+
+    <!--
+    <add-node
+        path="/api/package[@name='androidx.mediarouter.app']/class[@name='MediaRouteDynamicControllerDialog.RouteComparator']"
+        >        
+        <method 
+            visibility="public" static="false" abstract="false" return="int" name="Compare" 
+            native="false" synchronized="false" final="false" deprecated="not deprecated" 
+            >
+            <parameter type="java.lang.Object" name="lhs" />
+            <parameter type="java.lang.Object" name="rhs" />
+        </method>
+    </add-node>
+    -->
+
+    <!-- 
+    <add-node
+        path="/api/package[@name='androidx.preference']/class[@name='PreferenceGroupAdapter']"
+        >
+        <method 
+            deprecated="not deprecated" final="false" bridge="false" native="false" synchronized="false" synthetic="false" 
+            jni-return="V" jni-signature="(Landroid/views/ViewHolder;I)V" 
+            visibility="public" static="false" abstract="false" return="void" name="onBindViewHolder" 
+            >
+            <parameter type="android.views.ViewHolder" name="holder" jni-type="Landroid/views/ViewHolder;">
+            </parameter>
+            <parameter type="int" name="position" jni-type="I">
+            </parameter>
+        </method>
+        <method 
+            deprecated="not deprecated" final="false" bridge="false" native="false" synchronized="false" synthetic="false" 
+            jni-return="Ljava/lang/Object;" jni-signature="(Landroid/view/ViewGroup;I)Ljava/lang/Object;" 
+            visibility="public" static="false" abstract="false" return="java.lang.Object" name="onCreateViewHolder" 
+            >
+            <parameter type="android.view.ViewGroup" name="parent" jni-type="Landroid/view/ViewGroup;">
+            </parameter>
+            <parameter type="int" name="viewType" jni-type="I">
+            </parameter>
+        </method>        
+    </add-node> 
+    -->
+
+    <remove-node path="/api/package/class[@visibility='']" />
+    <remove-node path="/api/package/interface[@visibility='']" />
+    <remove-node path="/api/package/class[@deprecated='deprecated']" />
+    <remove-node path="/api/package/interface[@deprecated='deprecated']" />
+    <remove-node path="/api/package/class/method[@deprecated='deprecated']" />
+    <remove-node path="/api/package/interface/method[@deprecated='deprecated']" />
+    
+    <!--
+    https://docs.microsoft.com/en-us/xamarin/android/platform/binding-java-library/customizing-bindings/java-bindings-metadata
+    -->
+
+    <!--
+    Supress property generatiom
+
+    <attr 
+        path="/api/package[@name='org.java_websocket.handshake']/class[@name='HandshakeImpl1Client']/method[@name='setResourceDescriptor' 
+        and count(parameter)=1 
+        and parameter[1][@type='java.lang.String']]" 
+        name="propertyName"
+        >
+    </attr>
+    <attr 
+        path="/api/package[@name='org.java_websocket.handshake']/class[@name='HandshakeImpl1Client']/method[@name='getResourceDescriptor' 
+        and count(parameter)=0]" 
+        name="propertyName"
+        >
+    </attr>
+    -->
+
+
 </metadata>
