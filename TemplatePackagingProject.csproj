@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk">
+<PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <PackageType>Template</PackageType>
+    <PackageId>HolisticWare.DotNetNew.XamarinAndroidMavenBindingsProjectsStructureTemplate.CSharp</PackageId>
+    <PackageVersion>$([System.DateTime]::Now.ToString('yyyy.MM.dd.HHmm'))</PackageVersion>
+    <!--
+    <VersionSuffix>alpha-$([System.DateTime]::Now.ToString('yyyyMMddHHmm'))</VersionSuffix>
+    -->
+    <Title>HolisticWare dotnet new template for Xamarin.Android Maven Bindings</Title>
+    <Description>HolisticWare dotnet new template for Xamarin.Android Maven Bindings</Description>
+    <PackageTags>dotnet-new template holisticware dotnet new Xamarin.Android Maven Bindings</PackageTags>
+    <Authors>moljac Miljenko Cvjetko Mel Microsoft / Xamarin / HolisticWare</Authors>
+    <IsPackable>true</IsPackable>
+    <IncludeContentInPack>true</IncludeContentInPack>
+    <IncludeBuildOutput>false</IncludeBuildOutput>
+    <ContentTargetFolders>content</ContentTargetFolders>
+    <EnableDefaultContentItems>false</EnableDefaultContentItems>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="Content\**" Exclude="Content\**\bin\**;Content\**\obj\**;Content\**\.vs\**;Content\app.db" />
+    <Compile Remove="**\*" />
+  </ItemGroup>
+
+    <PropertyGroup>
+        <!--
+        put the package output into a nuget test folder
+        -->
+        <PackageOutputPath>./output/dotnet</PackageOutputPath>
+    </PropertyGroup>
+
+</Project>
