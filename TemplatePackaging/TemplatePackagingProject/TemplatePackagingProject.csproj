@@ -19,7 +19,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="Content\**" Exclude="Content\**\bin\**;Content\**\obj\**;Content\**\.vs\**;Content\app.db" />
+    <Content Include="../../Content\**" Exclude="Content\**\bin\**;Content\**\obj\**;Content\**\.vs\**;Content\app.db" />
     <Compile Remove="**\*" />
   </ItemGroup>
 
@@ -27,7 +27,7 @@
         <!--
         put the package output into a nuget test folder
         -->
-        <PackageOutputPath>./output/dotnet</PackageOutputPath>
+        <PackageOutputPath>../../output/dotnet</PackageOutputPath>
     </PropertyGroup>
 
 </Project>
