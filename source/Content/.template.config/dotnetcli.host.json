@@ -5,7 +5,7 @@
 		"NugetId": 
         {
 			"longName": "NugetId",
-			"shortName": "ni"
+			"shortName": "nid"
 		},
 		"NugetVersion": 
         {
@@ -15,17 +15,17 @@
 		"MavenGroupId": 
         {
 			"longName": "MavenGroupId",
-			"shortName": "mg"
+			"shortName": "mgid"
 		},
 		"MavenArtifactId": 
         {
 			"longName": "MavenArtifactId",
-			"shortName": "ma"
+			"shortName": "maid"
 		},
 		"MavenArtifactVersion": 
         {
 			"longName": "MavenArtifactVersion",
-			"shortName": "ma"
+			"shortName": "mav"
 		}		
 	}
 }

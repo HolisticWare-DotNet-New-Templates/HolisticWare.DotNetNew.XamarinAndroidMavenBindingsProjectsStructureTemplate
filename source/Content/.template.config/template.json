@@ -43,38 +43,38 @@
         {
           "type": "parameter",
           "defaultValue": "Nuget.Id.Package",
-          "replaces":"{NugetId}",
+          "replaces":"_PlaceholderNugetId_",
           "isRequired": true
         },
         "NugetVersion" : 
         {
           "type": "parameter",
-          "defaultValue": "1.0.0.0",
-          "replaces":"{NugetVersion}",
+          "defaultValue": "0.0.0.0",
+          "replaces":"_PlaceholderNugetVersion_",
           "isRequired": true
         },
         "MavenGroupId" : 
         {
           "type": "parameter",
-          "defaultValue": "com.google",
-          "replaces":"{MavenGroupId}",
+          "defaultValue": "tld.companyname.group",
+          "replaces":"_PlaceholderMavenGroupId_",
           "isRequired": true
         },
         "MavenArtifactId" : 
         {
           "type": "parameter",
           "defaultValue": "artifact",
-          "replaces":"{MavenArtifactId}",
+          "replaces":"_PlaceholderMavenArtifactId_",
           "isRequired": true
         },
         "MavenArtifactVersion" : 
         {
           "type": "parameter",
-          "defaultValue": "1.1.0",
-          "replaces":"{MavenArtifactVersion}",
+          "defaultValue": "0.0.0",
+          "replaces":"_PlaceholderMavenArtifactVersion_",
           "isRequired": true
         }        
-    }
+    },
     // placeholderFilename (optional)
     // A filename that will be completely ignored expect to indicate that its containing
     // directory should be copied. This allows creation of empty directory in the created
@@ -124,6 +124,8 @@
         // project / solution
         "type": "project"
     },
+
+
     "postActions": 
     [
         {
@@ -132,13 +134,13 @@
             "manualInstructions": 
             [
                 {
-                    "text": "Run 'chmod -R +x ./_Placeholder_/_Placeholder_.XamarinAndroid.Maven.Bindings/scripts/*.sh'"
+                    "text": "Run 'chmod -R +x ./scripts/*.sh'"
                 }
             ],
             "actionId": "cb9a6cf3-4f5c-4860-b9d2-03a574959774",
             "args": 
             {
-                "+x": "./_Placeholder_/_Placeholder_.XamarinAndroid.Maven.Bindings/scripts/*.sh"
+                "+x": "./scripts/*.sh"
             },
             "continueOnError": false
         },
@@ -148,13 +150,13 @@
             "manualInstructions": 
             [
                 {
-                    "text": "Run 'chmod -R +x ./_Placeholder_/_Placeholder_.XamarinAndroid.Maven.Bindings/scripts/binderate/*.sh'"
+                    "text": "Run 'chmod -R +x ./scripts/binderate/*.sh'"
                 }
             ],
             "actionId": "cb9a6cf3-4f5c-4860-b9d2-03a574959774",
             "args": 
             {
-                "+x": "./_Placeholder_/_Placeholder_.XamarinAndroid.Maven.Bindings/scripts/binderate/*.sh"
+                "+x": "./scripts/binderate/*.sh"
             },
             "continueOnError": false
         },
@@ -180,8 +182,25 @@
             "actionId": "3A7C4B45-1F5D-4A30-959A-51B88E82B5D2",
             "args": 
             {
-                "executable": "./scripts/binderate/binderate.sh",
+                "executable": "./_Placeholder_/_Placeholder_.XamarinAndroid.Maven.Bindings/scripts/download.sh",
                 "redirectStandardOutput": false
+            },
+            "manualInstructions": 
+            [
+                {
+                    "text": "Run './_Placeholder_/_Placeholder_.XamarinAndroid.Maven.Bindings/scripts/download.sh'"
+                }
+            ],
+            "continueOnError": false,
+            "description ": "calling ./_Placeholder_/_Placeholder_.XamarinAndroid.Maven.Bindings/scripts/download.sh"
+        },
+        {
+            "condition": "(OS != \"Windows_NT\")",
+            "actionId": "3A7C4B45-1F5D-4A30-959A-51B88E82B5D2",
+            "args": 
+            {
+                "executable": "./scripts/binderate/binderate.sh",
+                "redirectStandardOutput": true
             },
             "manualInstructions": 
             [
@@ -210,7 +229,7 @@
                 }
             ],
             "continueOnError": false,
-            "desc,ription ": "setups the project by calling setup.cmd"
+            "description ": "setups the project by calling setup.cmd"
         },
         {
             "condition": "(OS == \"Windows_NT\")",
