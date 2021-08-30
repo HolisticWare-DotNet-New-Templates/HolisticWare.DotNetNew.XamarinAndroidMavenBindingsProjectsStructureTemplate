@@ -9,11 +9,17 @@ Xamarin.Android PoC (Proof of concept) for Android (Maven) Bindings Project temp
 
 Local test:
 
+build:
+
+```
+dotnet cake
+```
+
 install:
 
 ```
 dotnet new --install \
-    ./output/HolisticWare.DotNetNew.XamarinAndroidMavenBindingsProjectsStructureTemplate.CSharp.2021.5.23.1626.nupkg 
+    ./output/dotnet/HolisticWare.DotNetNew.XamarinAndroidMavenBindingsProjectsStructureTemplate.CSharp.2021.5.23.1626.nupkg 
 ```
 
 uninstall:
@@ -23,13 +29,45 @@ dotnet new --uninstall \
     HolisticWare.DotNetNew.XamarinAndroidMavenBindingsProjectsStructureTemplate.CSharp
 ```
 
-usage:
+usage / test:
 
 ```
 dotnet new \
     hw-structure-android-maven-bindings \
+    --NugetId UserInputNugetId \
+    --NugetVersion UserInputNugetVersion \
+    --MavenGroupId UserInputMavenGroupId \
+    --MavenArtifactId UserInputMavenArtifactId \
+    --MavenArtifactVersion UserInputMavenArtifactVersion \
     --output Demo
+
+tree Demo
 ```
+
+Full uninstall, install for (lazy butts like me)
+
+
+```
+dotnet cake
+dotnet new --uninstall \
+    HolisticWare.DotNetNew.XamarinAndroidMavenBindingsProjectsStructureTemplate.CSharp
+
+dotnet new --install $(find ./output/nuget/*.nupkg)
+
+rm -fr tests/Demo
+dotnet new \
+    hw-structure-android-maven-bindings \
+    --NugetId UserInputNugetId \
+    --NugetVersion UserInputNugetVersion \
+    --MavenGroupId UserInputMavenGroupId \
+    --MavenArtifactId UserInputMavenArtifactId \
+    --MavenArtifactVersion UserInputMavenArtifactVersion \
+    --output tests/Demo
+
+tree tests/Demo
+
+```
+
 
 ## Links / References
 
