@@ -1,0 +1,104 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <!-- 
+  HolisticWare.DotNetNew.XamarinAndroid.Maven.Bindings.MsBuild.Tasks.Custom.csproj 
+  -->
+    <PropertyGroup>
+
+        <TargetFrameworks>netstandard2.0</TargetFrameworks>
+        <PackOnBuild>true</PackOnBuild>
+        <EnableDefaultItems>false</EnableDefaultItems>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    </PropertyGroup>
+
+    <!--
+    Project as a NuGet package.
+    -->
+    <PropertyGroup>
+        <PackOnBuild>true</PackOnBuild>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <IsPackable>true</IsPackable>
+
+        <IncludeContentInPack>true</IncludeContentInPack>
+        <!-- 
+        Change the default location where NuGet will put the build output 
+        
+           This changes the default folder where assemblies will be placed in the package.
+            The default is 'lib', but that is incorrect since these assemblies are mean to be used
+            by MSBuild, and to meant to be referenced as API from the NuGet package.
+        
+            tools/
+            tasks/
+        -->
+        <BuildOutputTargetFolder>tools</BuildOutputTargetFolder>
+        <!-- 
+        put the package output into a nuget test folder 
+        -->
+        <PackageOutputPath>../../output</PackageOutputPath>
+
+        <!-- 
+        nuget packaging
+        -->
+        <PackageId>HolisticWare.DotNetNew.XamarinAndroid.Maven.Bindings.MsBuild.Tasks.Custom</PackageId>
+        <Title>
+            HolisticWare.DotNetNew.XamarinAndroid.Maven.Bindings.MsBuild.Tasks.Custom
+        </Title>
+        <Summary>
+            MSBuild targets/tasks to add artifact discovery and download support to Xamarin.Android bindings projects
+        </Summary>
+        <Description>
+            MSBuild targets/tasks to add artifact discovery and download  support to Xamarin.Android bindings projects
+        </Description>
+        <Owners>HolisticWare</Owners>
+        <Authors>HolisticWare</Authors>
+        <Copyright>2021</Copyright>
+        <RepositoryUrl>
+            https://github.com/moljac/HolisticWare.DotNetNew.XamarinAndroid.Maven.Bindings.MsBuild.Tasks.Custom
+        </RepositoryUrl>
+        <PackageLicenseUrl>
+            https://github.com/moljac/HolisticWare.DotNetNew.XamarinAndroid.Maven.Bindings.MsBuild.Tasks.Custom/blob/master/LICENSE
+        </PackageLicenseUrl>
+        <PackageProjectUrl>
+            https://github.com/moljac/HolisticWare.DotNetNew.XamarinAndroid.Maven.Bindings.MsBuild.Tasks.Custom
+        </PackageProjectUrl>
+        <VersionPrefix>0.0.1</VersionPrefix>
+        <!--
+        VersionSuffix - For debugging and local nuget feed 
+        -->
+        <VersionSuffix>alpha-$([System.DateTime]::Now.ToString('yyyyMMddHHmmss'))</VersionSuffix>
+        <PackageVersion>$(Version)</PackageVersion>
+        <DisableImplicitFrameworkReferences>true</DisableImplicitFrameworkReferences>
+        <PackageTags>xamarin, android, bindings, utilities, maven, bindings</PackageTags>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <!--
+        PrivateAssets="All" is essential. This prevents these build-only dependencies
+        from ending up in the NuGet package's list of dependencies.
+        -->
+        <PackageReference Include="NETStandard.Library" Version="*" PrivateAssets="All" />
+        <PackageReference Include="Microsoft.Build.Framework" Version="*" PrivateAssets="All" />
+        <PackageReference Include="Microsoft.Build.Tasks.Core" Version="*" PrivateAssets="All" />
+        <PackageReference Include="Microsoft.Build.Utilities.Core" Version="*" PrivateAssets="All" />
+        <!--
+        https://github.com/NuGet/Home/wiki/Support-pre-release-packages-with-floating-versions
+        *-* - Float everything! Latest version available
+        1.*-* - Prefer latest 1.X version, include prerelease and stable
+        1.0.*-* - Prefer latest 1.0.X version, include prerelease and stable    
+        <PackageReference Include="HolisticWare.Xamarin.Tools.Maven" Version="*-*" PrivateAssets="All" />
+        -->
+        <!-- 
+        marks all packages as 'local only' so they don't end up in the nuspec 
+        -->
+        <PackageReference Update="@(PackageReference)" PrivateAssets="All" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Include="$(MSBuildThisFileDirectory)/build/HolisticWare.DotNetNew.XamarinAndroid.Maven.Bindings.MsBuild.Tasks.Custom.targets" PackagePath="build/" Pack="true">
+        </None>
+        <None Include="build\HolisticWare.DotNetNew.XamarinAndroid.Maven.Bindings.MsBuild.Tasks.Custom.props" PackagePath="build/" Pack="true" />
+    </ItemGroup>
+    <ItemGroup>
+        <Compile Include="*.cs" />
+    </ItemGroup>
+
+</Project>

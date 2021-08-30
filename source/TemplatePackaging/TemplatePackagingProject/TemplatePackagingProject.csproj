@@ -11,7 +11,9 @@
     <Description>HolisticWare dotnet new template for Xamarin.Android Maven Bindings</Description>
     <PackageTags>dotnet-new template holisticware dotnet new Xamarin.Android Maven Bindings</PackageTags>
     <Authors>moljac Miljenko Cvjetko Mel Microsoft / Xamarin / HolisticWare</Authors>
+
     <IsPackable>true</IsPackable>
+    <PackOnBuild>true</PackOnBuild>
     <IncludeContentInPack>true</IncludeContentInPack>
     <IncludeBuildOutput>false</IncludeBuildOutput>
     <ContentTargetFolders>content</ContentTargetFolders>
@@ -19,7 +21,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="../../Content\**" Exclude="Content\**\bin\**;Content\**\obj\**;Content\**\.vs\**;Content\app.db" />
+    <Content Include="../../Content/_Placeholder_.*/**" Exclude="Content\**\bin\**;Content\**\obj\**;Content\**\.vs\**;Content\**\.DS_Store" />
     <Compile Remove="**\*" />
   </ItemGroup>
 
@@ -27,7 +29,7 @@
         <!--
         put the package output into a nuget test folder
         -->
-        <PackageOutputPath>../../output/dotnet</PackageOutputPath>
+        <PackageOutputPath>../../../output/dotnet/</PackageOutputPath>
     </PropertyGroup>
 
 </Project>

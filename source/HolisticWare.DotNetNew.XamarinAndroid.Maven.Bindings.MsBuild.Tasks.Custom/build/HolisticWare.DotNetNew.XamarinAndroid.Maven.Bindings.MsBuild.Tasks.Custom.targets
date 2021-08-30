@@ -1,0 +1,393 @@
+﻿<!--
+  NuGet automatically imports this file into any project that has a PackageReference to 'SampleTasks'.
+  To see this in action, execute "dotnet restore" on the 3-NuGet example and look in the obj/ folder for
+  a file named Web.csproj.g.nuget.targets. You'll see inside that it contains an "Import" to this file.
+ -->
+<Project>
+
+    <PropertyGroup>  
+        <!--
+        <EnableDefaultItems>false</EnableDefaultItems>
+        -->
+    </PropertyGroup>  
+        
+    <PropertyGroup>
+        <RunCLIJavaDecompilerProcyon Condition="'$(RunCLIJavaDecompilerProcyon)'==''">true</RunCLIJavaDecompilerProcyon>
+        <RunCLIJavaDecompilerCFR Condition="'$(RunCLIJavaDecompilerCFR)'==''">true</RunCLIJavaDecompilerCFR>
+        <RunCLIJavaDecompilerBytecodeViewerProcyon Condition="'$(RunCLIJavaDecompilerBytecodeViewerProcyon)'==''">false</RunCLIJavaDecompilerBytecodeViewerProcyon>
+        <RunCLIJavaDecompilerBytecodeViewerCFR Condition="'$(RunCLIJavaDecompilerBytecodeViewerCFR)'==''">false</RunCLIJavaDecompilerBytecodeViewerCFR>
+        <!--
+            Bytecode Viewer support for Krakatau - needs Python/PyPy support
+        -->        
+        <RunCLIJavaDecompilerBytecodeViewerKrakatau Condition="'$(RunCLIJavaDecompilerBytecodeViewerKrakatau)'==''">false</RunCLIJavaDecompilerBytecodeViewerKrakatau>
+        <RunCLIJavaDecompilerBytecodeViewerKrakatauBytecode Condition="'$(RunCLIJavaDecompilerBytecodeViewerKrakatauBytecode)'==''">false</RunCLIJavaDecompilerBytecodeViewerKrakatauBytecode>
+        <!--
+            Bytecode Viewer support for JD GUI - comming soon
+        -->
+        <RunCLIJavaDecompilerBytecodeViewerJDGUI Condition="'$(RunCLIJavaDecompilerBytecodeViewerJDGUI)'==''">false</RunCLIJavaDecompilerBytecodeViewerJDGUI>
+        <!--
+            Bytecode Viewer support for Smali - comming soon
+        -->
+        <RunCLIJavaDecompilerBytecodeViewerSmali Condition="'$(RunCLIJavaDecompilerBytecodeViewerSmali)'==''">false</RunCLIJavaDecompilerBytecodeViewerSmali>                
+    </PropertyGroup>
+        
+    <PropertyGroup>
+        <BindingsHelperFolderLibsInNuget>$(MSBuildThisFileDirectory)../Content/holisticware-generated/decompilers/lib/</BindingsHelperFolderLibsInNuget> 
+
+        <BindingsHelperFolder>holisticware-generated</BindingsHelperFolder>          
+        <BindingsHelperFolderInProject>$(MSBuildProjectDirectory)/$(BindingsHelperFolder)</BindingsHelperFolderInProject>                        
+        <BindingsHelperFolderDecompilerOutput>$(BindingsHelperFolderInProject)/decompilers</BindingsHelperFolderDecompilerOutput>  
+        <BindingsHelperFolderLibs>$(BindingsHelperFolderDecompilerOutput)/lib/</BindingsHelperFolderLibs>
+    </PropertyGroup>
+        
+    <Target 
+        Name="HW_DumpProperties_Folders" 
+        BeforeTargets="CoreCompile"
+        >
+        <Message Text="Dumping Properties - Folders mc++" Importance="high" />
+        <Message 
+            Text="BindingsHelperFolder                      = $(BindingsHelperFolder)" Importance="high" />
+        <Message Text="BindingsHelperFolderDecompilerOutput = $(BindingsHelperFolderDecompilerOutput)"          Importance="high" />
+        <Message Text="BindingsHelperFolder                 = $(BindingsHelperFolder)" Importance="high" />
+        <Message Text="BindingsHelperFolderInProject        = $(BindingsHelperFolderInProject)" Importance="high" />
+        <Message Text="BindingsHelperFolderInProject        = $(BindingsHelperFolderInProject)" Importance="high" />
+        <Message Text="BindingsHelperFolderLibsInNuget      = $(BindingsHelperFolderLibsInNuget)" Importance="high" />
+        
+    </Target>
+    
+    
+    <PropertyGroup>
+        <IsWindows Condition="'$(OS)' == 'Windows_NT'">true</IsWindows>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <IsOSX Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::OSX)))' == 'true'">true</IsOSX>
+        <IsLinux Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Linux)))' == 'true'">true</IsLinux>
+    </PropertyGroup>
+
+    <Target Name="HW_PrintRID" BeforeTargets="Build">
+        <Message Text="IsWindows $(IsWindows)" Importance="high" />
+        <Message Text="IsOSX $(IsOSX)" Importance="high" />
+        <Message Text="IsLinux $(IsLinux)" Importance="high" />
+    </Target>
+    <Target 
+        Name="HW_BindingsHelpersInit" 
+        BeforeTargets="CoreCompile"
+        >
+        <MakeDir Directories="$(MSBuildProjectDirectory)/holisticware-generated/" />  
+        <MakeDir Directories="$(MSBuildProjectDirectory)/holisticware-generated/decompilers" />  
+        <MakeDir Directories="$(MSBuildProjectDirectory)/holisticware-generated/decompilers/lib" />  
+    </Target>
+    <Target 
+        Name="HW_BindingsHelpersInitOSX" 
+        BeforeTargets="CoreCompile"
+        Condition="'$(IsOSX)'"
+        >
+        
+        <Exec Command="pwd"></Exec>
+        <Exec Command="ls -al $(MSBuildProjectDirectory)/holisticware-generated/"></Exec>
+        <Exec Command="ls -al $(MSBuildProjectDirectory)/holisticware-generated/decompilers"></Exec>
+        <Exec Command="ls -al $(MSBuildProjectDirectory)/holisticware-generated/decompilers/lib"></Exec>
+        
+        <Copy      
+            SourceFiles="$(MSBuildThisFileDirectory)../holisticware-generated/"
+            DestinationFolder="$(MSBuildProjectDirectory)/holisticware-generated/"            
+        />
+    </Target>
+    
+    <ItemGroup>
+        <Folder Include="$(BindingsHelperFolder)/" />
+        <Folder Include="$(BindingsHelperFolderLibs)/" />
+        <Folder Include="$(BindingsHelperFolderDecompilerOutput)/" />
+        
+        <!--
+        https://github.com/netonjm/GtkSharp.NuGet/pull/1/files
+        -->
+        <Content 
+            Include="$(MSBuildThisFileDirectory)/holisticware-generated/decompilers/lib/procyon-decompiler-0.5.36.jar"
+            >
+            <Link>holisticware-generated/lib/procyon-decompiler-0.5.36</Link>
+            <Visible>true</Visible>
+        </Content>
+        <Content 
+            Include="$(MSBuildThisFileDirectory)/holisticware-generated/decompilers/lib/cfr-0.148.jar"
+            >
+            <Link>holisticware-generated/lib/cfr-0.148.jar</Link>
+            <Visible>true</Visible>
+        </Content>
+        <Content 
+            Include="$(MSBuildThisFileDirectory)/holisticware-generated/decompilers/lib/Bytecode-Viewer-2.9.22.jar"
+            >
+            <Link>holisticware-generated/decompilers/lib/Bytecode-Viewer-2.9.22.jar</Link>
+            <Visible>true</Visible>
+        </Content>
+    </ItemGroup>
+    <ItemGroup>
+        <!--
+        MCWs C# code is emitted to folowing folder:
+        $(IntermediateOutputPath = "obj/$(Configuration)/generated/src/"
+        $(IntermediateOutputPath = "obj/Debug/generated/src/"
+        $(IntermediateOutputPath = "obj/Release/generated/src/"
+        -->
+        <BindingDecompilerBinaries Include="$(MSBuildThisFileDirectory)/../lib/*"></BindingDecompilerBinaries>  
+    </ItemGroup> 
+
+    <!--
+    AvailableItemName
+        EmbeddedJar
+        EmbeddedNativeLibrary
+        EmbeddedReferenceJar
+        InputJar
+        JavaDocIndex
+        JavaDocJar
+        JavaSourceJar
+        LibraryProjectProperties
+        LibraryProjectZip
+        ReferenceJar
+        TransformFile
+    -->
+    <Target 
+        Name="MergeArtifactsToDecompile"
+        BeforeTargets="CoreCompile"
+        >
+        <ItemGroup>
+            <ArtifactJarsToDecompile Include="@(EmbeddedJar);@(InputJar);@(ReferenceJar)" />
+        </ItemGroup>
+        <Message Text="EmbeddedJar" />
+        <Message Text="    %(EmbeddedJar.Identity)" />
+        <Message Text="EmbeddedJar" />
+        <Message Text="    %(InputJar.Identity)" />
+        <Message Text="EmbeddedJar" />
+        <Message Text="    %(ReferenceJar.Identity)" />
+        <Message Text="ArtifactJarsToDecompile" />
+        <Message Text="    %(ArtifactJarsToDecompile.Identity)" />
+        <Message Text="ArtifactJarsToDecompile.Identity" />
+        <Message Text="    %(ArtifactJarsToDecompile.Identity)" />
+        <Message Text="ArtifactJarsToDecompile.FullPath" />
+        <Message Text="    %(ArtifactJarsToDecompile.FullPath)" />
+        
+        <Message Text="BindingDecompilerBinaries.FullPath" />
+        <Message Text="    %(BindingDecompilerBinaries.FullPath)" />
+    </Target>
+    
+    <!--
+    Decompiling with JavaP
+    https://github.com/moljac/HolisticWare.WebSite.CompositeC1.Content.MarkDown/blob/master/xamarin/products/xamarin-platform/traditional-standard/xamarin-android/advanced/bindings/java-bindings/analysis-java-binaries-jars-decompiling.md
+    
+    export JAR_ARTIFACT=../../../../externals/android/grpc-stub-1.14.0.jar
+    javap \
+        -classpath $JAR_ARTIFACT \
+            $(jar -tf $JAR_ARTIFACT | grep "class$" | sed s/\.class$//) \
+            >> $JAR_ARTIFACT.class.java.txt
+
+    javap -classpath ../../../../externals/android/grpc-stub-1.14.0.jar \
+            \$\(jar -tf ../../../../externals/android/grpc-stub-1.14.0.jar | grep &quot;class$&quot; | sed s/\.class$//\) \
+            >> grpc-stub-1.14.0.jar.class.java.txt
+            
+    TURNED OFF - NEED INFO ON CHARACTER ENCODING
+    <Target
+        Name="DecompileJavaJavaP" 
+        BeforeTargets="CoreCompile"
+        >
+        <Exec 
+            Command="javap -classpath @(EmbeddedJar) $(jar -tf @(EmbeddedJar) | grep &quot;class$&quot; | sed &quot;s/\.class$//&quot; ) >> javap.dump.class"
+            /> 
+    </Target>
+    -->
+
+    <!--
+    Decompiling with Procyon
+    https://bitbucket.org/mstrobel/procyon/wiki/Java%20Decompiler
+
+    export JAR_ARTIFACT=../../../../externals/android/grpc-stub-1.14.0.jar
+    java \
+        -jar ./procyon-decompiler-0.5.36 \
+        -jar $JAR_ARTIFACT/grpc-stub-1.14.0.jar \
+        dump/
+    -->
+    <Target 
+        Name="DecompileJavaProcyonClassic" 
+        Condition=" '$(Sdk)'!='Microsoft.NET.Sdk' " 
+        BeforeTargets="CoreCompile"
+        >
+        <Exec 
+            Condition=" '$(RunCLIJavaDecompilerProcyon)' == 'true' "            
+            Command="java -jar $(BindingsHelperFolderLibsInNuget)/procyon-decompiler-0.5.36.jar -jar %(ArtifactJarsToDecompile.FullPath) > $(BindingsHelperFolderDecompilerOutput)\%(ArtifactJarsToDecompile.Filename).procyon.dump.cli.classes"
+            /> 
+    </Target>
+    <Target
+        Name="DecompileJavaProcyonSdk" 
+        Condition=" '$(Sdk)'=='Microsoft.NET.Sdk' " 
+        BeforeTargets="CoreCompile"
+        >
+        <Exec 
+            Condition=" '$(RunCLIJavaDecompilerProcyon)' == 'true' "            
+            Command="java -jar $(BindingsHelperFolderLibsInNuget)/procyon-decompiler-0.5.36 -jar %(ArtifactJarsToDecompile.FullPath) > $(BindingsHelperFolderDecompilerOutput)\%(ArtifactJarsToDecompile.Filename).procyon.dump.cli.classes"
+            /> 
+    </Target>
+
+
+    <!--
+    Decompiling with CFR
+    http://www.benf.org/other/cfr/
+
+    export JAR_ARTIFACT=../../../../externals/android/grpc-stub-1.14.0.jar
+    java \
+        -jar ./cfr-0.148.jar \
+        -jar $JAR_ARTIFACT
+    -->
+    <Target 
+        Name="DecompileJavaCFRClassic" 
+        Condition=" '$(Sdk)'!='Microsoft.NET.Sdk' " 
+        BeforeTargets="CoreCompile"
+        >
+        <Exec 
+            Condition=" '$(RunCLIJavaDecompilerCFR)' == 'true' "
+            Command="java -jar $(BindingsHelperFolderLibsInNuget)/cfr-0.148.jar -jar %(ArtifactJarsToDecompile.FullPath) > $(BindingsHelperFolderDecompilerOutput)\%(ArtifactJarsToDecompile.Filename).cfr.dump.cli.classes"
+            /> 
+    </Target>
+    <Target
+        Name="DecompileJavaCFRSdk" 
+        Condition=" '$(Sdk)'=='Microsoft.NET.Sdk' " 
+        BeforeTargets="CoreCompile"
+        >
+        <Exec 
+            Condition=" '$(RunCLIJavaDecompilerCFR)' == 'true' "
+            Command="java -jar $(BindingsHelperFolderLibsInNuget)/cfr-0.148.jar -jar %(ArtifactJarsToDecompile.FullPath) > $(BindingsHelperFolderDecompilerOutput)\%(ArtifactJarsToDecompile.Filename).cfr.dump.cli.classes"
+            /> 
+    </Target>
+    
+    <!--
+    java -jar Bytecode-Viewer-2.9.22.jar -help
+    https://the.bytecode.club - Created by @Konloch - Bytecode Viewer 2.9.22, FatJar: true
+    -help                         Displays the help menu
+    -list                         Displays the available decompilers
+    -decompiler <decompiler>      Selects the decompiler, procyon by default
+    -i <input file>               Selects the input file
+    -o <output file>              Selects the output file
+    -t <target classname>         Must either be the fully qualified classname or "all" to decompile all as zip
+    -nowait                       Doesn't wait for the user to read the CLI messages
+    
+    java -jar Bytecode-Viewer-2.9.22.jar -list
+        Procyon
+        CFR
+        FernFlower
+        Krakatau
+        Krakatau-Bytecode
+        JD-GUI
+        Smali    
+    
+    
+    java \
+        -jar ~/bin/Bytecode-Viewer-2.9.22.jar \
+        -t all \
+        -i ../../externals/android/grpc-protobuf-lite-1.14.0.jar  \
+        -o ./holisticware-generated/decompilers/Bytecode-Viewer-cfr.classes.zip \
+        -decompiler cfr
+    -->
+    <Target
+        Name="DecompileJavaBytecodeViewerProcyon" 
+        BeforeTargets="CoreCompile"
+        >
+        <Exec 
+            Condition=" '$(RunCLIJavaDecompilerBytecodeViewerProcyon)' == 'true' "
+            Command="java -jar $(BindingsHelperFolderLibsInNuget)/Bytecode-Viewer-2.9.22.jar -decompiler Procyon -t all -i %(ArtifactJarsToDecompile.FullPath) -o $(BindingsHelperFolderDecompilerOutput)\%(ArtifactJarsToDecompile.Filename).bytecodeviewer-procyon.dump.cli.classes.zip"
+            /> 
+    </Target>
+    <Target
+        Name="DecompileJavaBytecodeViewerCFR" 
+        BeforeTargets="CoreCompile"
+        >
+        <Exec 
+            Condition=" '$(RunCLIJavaDecompilerBytecodeViewerCFR)' == 'true' "
+            Command="java -jar $(BindingsHelperFolderLibsInNuget)/Bytecode-Viewer-2.9.22.jar -decompiler CFR -t all -i %(ArtifactJarsToDecompile.FullPath) -o $(BindingsHelperFolderDecompilerOutput)\%(ArtifactJarsToDecompile.Filename).bytecodeviewer-cfr.dump.cli.classes.zip"
+            /> 
+    </Target>
+    <Target
+        Name="DecompileJavaBytecodeViewerFernFlower" 
+        BeforeTargets="CoreCompile"
+        >
+        <Exec 
+            Condition=" '$(RunCLIJavaDecompilerBytecodeViewerFernFlower)' == 'true' "
+            Command="java -jar $(BindingsHelperFolderLibsInNuget)/Bytecode-Viewer-2.9.22.jar -decompiler FernFlower -t all -i %(ArtifactJarsToDecompile.FullPath) -o $(BindingsHelperFolderDecompilerOutput)\%(ArtifactJarsToDecompile.Filename).bytecodeviewer-fernflower.dump.cli.classes.zip"
+            /> 
+    </Target>
+    <Target
+        Name="DecompileJavaBytecodeViewerKrakatau" 
+        BeforeTargets="CoreCompile"
+        >
+        <Exec 
+            Condition=" '$(RunCLIJavaDecompilerBytecodeViewerKrakatau)' == 'true' "            
+            Command="java -jar $(BindingsHelperFolderLibsInNuget)/Bytecode-Viewer-2.9.22.jar -decompiler Krakatau -t all -i %(ArtifactJarsToDecompile.FullPath) -o $(BindingsHelperFolderDecompilerOutput)\%(ArtifactJarsToDecompile.Filename).bytecodeviewer-krakatau.dump.cli.classes.zip"
+            /> 
+    </Target>
+    <Target
+        Name="DecompileJavaBytecodeViewerKrakatauBytecode" 
+        BeforeTargets="CoreCompile"
+        >
+        <Exec 
+            Condition=" '$(RunCLIJavaDecompilerBytecodeViewerKrakatauBytecode)' == 'true' "            
+            Command="java -jar $(BindingsHelperFolderLibsInNuget)/Bytecode-Viewer-2.9.22.jar -decompiler Krakatau-Bytecode -t all -i %(ArtifactJarsToDecompile.FullPath) -o $(BindingsHelperFolderDecompilerOutput)\%(ArtifactJarsToDecompile.Filename).bytecodeviewer-krakatau-bytecode.dump.cli.classes.zip"
+            /> 
+    </Target>
+    <Target
+        Name="DecompileJavaBytecodeViewerJDGUI" 
+        BeforeTargets="CoreCompile"
+        >
+        <Exec 
+            Condition=" '$(RunCLIJavaDecompilerBytecodeViewerJDGUI)' == 'true' "            
+            Command="java -jar $(BindingsHelperFolderLibsInNuget)/Bytecode-Viewer-2.9.22.jar -decompiler JD-GUI -t all -i %(ArtifactJarsToDecompile.FullPath) -o $(BindingsHelperFolderDecompilerOutput)\%(ArtifactJarsToDecompile.Filename).bytecodeviewer-jd-gui.dump.cli.classes.zip"
+            /> 
+    </Target>
+    <Target
+        Name="DecompileJavaBytecodeViewerSmali" 
+        BeforeTargets="CoreCompile"
+        >
+        <Exec 
+            Condition=" '$(RunCLIJavaDecompilerBytecodeViewerSmali)' == 'true' "            
+            Command="java -jar $(BindingsHelperFolderLibsInNuget)/Bytecode-Viewer-2.9.22.jar -decompiler Smali -t all -i %(ArtifactJarsToDecompile.FullPath) -o $(BindingsHelperFolderDecompilerOutput)\%(ArtifactJarsToDecompile.Filename).bytecodeviewer-smali.dump.cli.classes.zip"
+            /> 
+    </Target>
+    
+  
+    <PropertyGroup>
+        <TaskFolder>netstandard2.0</TaskFolder>
+        <!--
+            <TaskFolder Condition=" '$(MSBuildRuntimeType)' != 'Core' ">net46</TaskFolder>        
+        -->
+        <TaskAssembly>$(MSBuildThisFileDirectory)..\tools\$(TaskFolder)\HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Decompilers.dll</TaskAssembly>
+    </PropertyGroup>
+
+    <UsingTask 
+        TaskName="HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Decompilers.DecompilerTaskForJavaBinaries" 
+        AssemblyFile="$(TaskAssembly)" 
+        />
+        <Target
+            Name="Run_DecompilerTaskForJavaBinaries" 
+            BeforeTargets="CoreCompile"
+            >
+            <Message Text="mc++ Target=DecompilerTaskForJavaBinaries"></Message>
+            <HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Decompilers.DecompilerTaskForJavaBinaries
+                Executable="javap"
+                JarBinaryDecompiler="javap"
+                JarBinaryAndroidArtifact="%(ArtifactJarsToDecompile.FullPath)"
+                Options=" "
+                >            
+        </HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Decompilers.DecompilerTaskForJavaBinaries>
+        <HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Decompilers.DecompilerTaskForJavaBinaries
+            Executable="java"
+            JarBinaryDecompiler="$(BindingsHelperFolderLibsInNuget)/procyon-decompiler-0.5.36.jar"
+            JarBinaryAndroidArtifact="%(ArtifactJarsToDecompile.FullPath)"
+            Options=" "
+            >            
+        </HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Decompilers.DecompilerTaskForJavaBinaries>
+        <HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Decompilers.DecompilerTaskForJavaBinaries
+            Executable="java"
+            JarBinaryDecompiler="$(BindingsHelperFolderLibsInNuget)/cfr-0.148.jar"
+            JarBinaryAndroidArtifact="%(ArtifactJarsToDecompile.FullPath)"
+            Options=" "
+            >            
+        </HolisticWare.Xamarin.Tools.Bindings.XamarinAndroid.Decompilers.DecompilerTaskForJavaBinaries>
+    </Target>
+
+</Project>

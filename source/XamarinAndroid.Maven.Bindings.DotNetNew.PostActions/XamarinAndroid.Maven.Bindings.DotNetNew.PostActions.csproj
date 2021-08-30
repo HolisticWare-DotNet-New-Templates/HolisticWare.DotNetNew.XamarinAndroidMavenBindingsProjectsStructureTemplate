@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <DebugType>full</DebugType>
+        <DebugSymbols>true</DebugSymbols>
+        <VersionPrefix>0.0.1</VersionPrefix>
+    </PropertyGroup>
+    <ItemGroup>
+        <!--
+        Microsoft.TemplateEngine.Abstractions
+        https://www.nuget.org/packages/Microsoft.TemplateEngine.Abstractions/
+        no dependencies
+        -->
+        <PackageReference Include="Microsoft.TemplateEngine.Abstractions" Version="5.0.203" />
+        <!--
+        Microsoft.TemplateEngine.Cli
+        https://www.nuget.org/packages/Microsoft.TemplateEngine.Cli/
+        dependencies
+        
+            Microsoft.DotNet.Cli.CommandLine
+            https://www.nuget.org/packages/Microsoft.DotNet.Cli.CommandLine/
+            404 - not listed
+
+            Microsoft.DotNet.TemplateLocator
+            https://www.nuget.org/packages/Microsoft.DotNet.TemplateLocator/
+            404 - not listed
+        -->
+        <PackageReference Include="Microsoft.TemplateEngine.Cli" Version="5.0.0-rc.2.20474.2" />
+
+    </ItemGroup>
+</Project>
