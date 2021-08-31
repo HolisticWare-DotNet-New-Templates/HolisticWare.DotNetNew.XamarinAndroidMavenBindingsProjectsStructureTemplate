@@ -39,11 +39,21 @@
     "defaultName": "Maven.Bindings.XamarinAndroid",
     "symbols": 
     {
+        "TargetFrameworks" : 
+        {
+          "type": "parameter",
+          // 2021-08-31     monoandroid10.0;monoandroid11.0;net6.0-android30.0
+          // 2021-09-15     monoandroid11.0;monoandroid12.0;net6.0-android31.0
+          // 2021-08-31     MonoAndroid9.0;monoandroid10.0;monoandroid11.0;net6.0-android30.0
+          "defaultValue": "monoandroid10.0;monoandroid11.0;net6.0-android30.0",
+          "replaces":"_Placeholder_Target_Frameworks_",
+          "isRequired": false
+        },
         "NET.SDK" : 
         {
           "type": "parameter",
           "defaultValue": "Xamarin.Legacy.Sdk",
-          "defaultValue": "Microsoft.NET.Sdk",
+          //"defaultValue": "Microsoft.NET.Sdk",
           "replaces":"_Placeholder_NET_SDK_",
           "isRequired": false
         },
