@@ -24,7 +24,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="..\..\Content/**" Exclude="..\..\Content\**\bin\**;..\..\Content\**\obj\**;..\..\Content\**\.vs\**;..\..\Content\**\.DS_Store" />
+    <Content Include="..\..\Content\**" Exclude="..\..\Content\**\bin\**;..\..\Content\**\obj\**;..\..\Content\**\.vs\**;..\..\Content\**\.DS_Store" />
     <Compile Remove="..\..\Content\**\*" />
   </ItemGroup>
 
