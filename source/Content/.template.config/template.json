@@ -39,6 +39,14 @@
     "defaultName": "Maven.Bindings.XamarinAndroid",
     "symbols": 
     {
+        "NET.SDK" : 
+        {
+          "type": "parameter",
+          "defaultValue": "Xamarin.Legacy.Sdk",
+          "defaultValue": "Microsoft.NET.Sdk",
+          "replaces":"_Placeholder_NET_SDK_",
+          "isRequired": false
+        },
         "NugetId" : 
         {
           "type": "parameter",
