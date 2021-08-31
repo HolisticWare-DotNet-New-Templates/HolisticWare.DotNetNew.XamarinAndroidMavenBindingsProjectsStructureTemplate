@@ -108,6 +108,8 @@ dotnet new --install $(find ./output/nuget/*.nupkg)
 rm -fr tests/Demo
 dotnet new \
     hw-structure-android-maven-bindings \
+    --TargetFrameworks "MonoAndroid9.0;monoandroid10.0;monoandroid11.0;net6.0-android30.0" \
+    --NET.SDK Xamarin.Legacy.Sdk \
     --NugetId UserInputNugetId \
     --NugetVersion UserInputNugetVersion \
     --MavenGroupId androidx.startup \
