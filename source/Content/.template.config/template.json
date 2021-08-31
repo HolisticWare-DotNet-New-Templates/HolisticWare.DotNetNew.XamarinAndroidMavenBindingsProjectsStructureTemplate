@@ -128,19 +128,20 @@
 
     "postActions": 
     [
+        // https://github.com/dotnet/templating/wiki/Post-Action-Registry
         {
             "condition": "(OS != \"Windows_NT\")",
             "description": "Make scripts executable",
             "manualInstructions": 
             [
                 {
-                    "text": "Run 'chmod -R +x ./scripts/*.sh'"
+                    "text": "Run 'chmod +x scripts/*.sh'"
                 }
             ],
             "actionId": "cb9a6cf3-4f5c-4860-b9d2-03a574959774",
             "args": 
             {
-                "+x": "./scripts/*.sh"
+                "+x": "scripts/*.sh"
             },
             "continueOnError": false
         },
@@ -150,13 +151,13 @@
             "manualInstructions": 
             [
                 {
-                    "text": "Run 'chmod -R +x ./scripts/binderate/*.sh'"
+                    "text": "Run 'chmod +x scripts/binderate/*.sh scripts/binderate/*.ps1'"
                 }
             ],
             "actionId": "cb9a6cf3-4f5c-4860-b9d2-03a574959774",
             "args": 
             {
-                "+x": "./scripts/binderate/*.sh"
+                "+x": "scripts/binderate/*.sh scripts/binderate/*.ps1"
             },
             "continueOnError": false
         },
@@ -165,34 +166,17 @@
             "actionId": "3A7C4B45-1F5D-4A30-959A-51B88E82B5D2",
             "args": 
             {
-                "executable": "./_Placeholder_/_Placeholder_.XamarinAndroid.Maven.Bindings/scripts/run-all.sh",
+                "executable": "scripts/download.sh",
                 "redirectStandardOutput": false
             },
             "manualInstructions": 
             [
                 {
-                    "text": "Run './_Placeholder_/_Placeholder_.XamarinAndroid.Maven.Bindings/scripts/run-all.sh'"
+                    "text": "Run 'scripts/download.sh'"
                 }
             ],
             "continueOnError": false,
-            "description ": "calling ./_Placeholder_/_Placeholder_.XamarinAndroid.Maven.Bindings/scripts/run-all.sh"
-        },
-        {
-            "condition": "(OS != \"Windows_NT\")",
-            "actionId": "3A7C4B45-1F5D-4A30-959A-51B88E82B5D2",
-            "args": 
-            {
-                "executable": "./_Placeholder_/_Placeholder_.XamarinAndroid.Maven.Bindings/scripts/download.sh",
-                "redirectStandardOutput": false
-            },
-            "manualInstructions": 
-            [
-                {
-                    "text": "Run './_Placeholder_/_Placeholder_.XamarinAndroid.Maven.Bindings/scripts/download.sh'"
-                }
-            ],
-            "continueOnError": false,
-            "description ": "calling ./_Placeholder_/_Placeholder_.XamarinAndroid.Maven.Bindings/scripts/download.sh"
+            "description ": "calling scripts/download.sh"
         },
         {
             "condition": "(OS != \"Windows_NT\")",
@@ -205,11 +189,11 @@
             "manualInstructions": 
             [
                 {
-                    "text": "Run './_Placeholder_/_Placeholder_.XamarinAndroid.Maven.Bindings/scripts/binderate/binderate.sh'"
+                    "text": "Run 'scripts/binderate/binderate.sh'"
                 }
             ],
             "continueOnError": false,
-            "description ": "calling ./_Placeholder_/_Placeholder_.XamarinAndroid.Maven.Bindings/scripts/binderate/binderate.sh"
+            "description ": "calling scripts/binderate/binderate.sh"
         },
 
 
@@ -219,33 +203,33 @@
             "condition": "(OS == \"Windows_NT\")",
             "actionId": "3A7C4B45-1F5D-4A30-959A-51B88E82B5D2",
             "args": {
-                "executable": ".\\scripts\\run-all.cmd",
-                "redirectStandardOutput": false
+                "executable": "scripts\\download.ps1",
+                "redirectStandardOutput": true
             },
             "manualInstructions": 
             [
                 {
-                    "text": "Run '.\\scripts\\run-all.cmd'"
+                    "text": "Run 'scripts\\download.ps1'"
                 }
             ],
             "continueOnError": false,
-            "description ": "setups the project by calling setup.cmd"
+            "description ": "calling scripts/download.ps1"
         },
         {
             "condition": "(OS == \"Windows_NT\")",
             "actionId": "3A7C4B45-1F5D-4A30-959A-51B88E82B5D2",
             "args": {
-                "executable": ".\\scripts\\binderate\\binderate.cmd",
-                "redirectStandardOutput": false
+                "executable": "scripts\\binderate\\binderate.ps1",
+                "redirectStandardOutput": true
             },
             "manualInstructions": 
             [
                 {
-                    "text": "Run '.\\scripts\\binderate\\binderate.cmd'"
+                    "text": "Run 'scripts\\binderate\\binderate.ps1'"
                 }
             ],
             "continueOnError": false,
-            "description ": "calling .\\scripts\\binderate\\binderate.cmd"
+            "description ": "calling scripts\\binderate\\binderate.ps1"
         }
     ]
 }

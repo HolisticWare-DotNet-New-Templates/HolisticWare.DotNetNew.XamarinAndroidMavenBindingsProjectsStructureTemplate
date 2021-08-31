@@ -86,7 +86,7 @@ Task ("build-content")
 	);
 
 DateTime dt = DateTime.Now;
-string version = $"{dt.ToString("yyyy.MM.dd.HHmm")}";
+string version = $"0.0.0.1-preview{dt.ToString("yyyyMMddHHmm")}";
 
 FilePath file_source = GetFiles ($"./source/TemplatePackaging/*.nuspec").ToList () [0];
 Information($"file = {file_source} : ");

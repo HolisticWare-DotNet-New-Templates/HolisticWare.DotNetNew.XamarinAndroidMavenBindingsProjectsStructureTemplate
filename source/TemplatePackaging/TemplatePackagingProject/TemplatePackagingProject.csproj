@@ -3,7 +3,10 @@
     <TargetFramework>net5.0</TargetFramework>
     <PackageType>Template</PackageType>
     <PackageId>HolisticWare.DotNetNew.XamarinAndroidMavenBindingsProjectsStructureTemplate.CSharp</PackageId>
-    <PackageVersion>$([System.DateTime]::Now.ToString('yyyy.MM.dd.HHmm'))</PackageVersion>
+    <PackageVersionPrefix>0.0.0.1</PackageVersionPrefix>
+    <PackageVersionSufix>$([System.DateTime]::Now.ToString('yyyyMMddHHmm'))</PackageVersionSufix>
+    <PackageVersion>$(PackageVersionPrefix)-preview$(PackageVersionSufix)</PackageVersion>
+
     <!--
     <VersionSuffix>alpha-$([System.DateTime]::Now.ToString('yyyyMMddHHmm'))</VersionSuffix>
     -->
@@ -21,8 +24,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="../../Content/_Placeholder_.*/**" Exclude="Content\**\bin\**;Content\**\obj\**;Content\**\.vs\**;Content\**\.DS_Store" />
-    <Compile Remove="**\*" />
+    <Content Include="..\..\Content/**" Exclude="..\..\Content\**\bin\**;..\..\Content\**\obj\**;..\..\Content\**\.vs\**;..\..\Content\**\.DS_Store" />
+    <Compile Remove="..\..\Content\**\*" />
   </ItemGroup>
 
     <PropertyGroup>

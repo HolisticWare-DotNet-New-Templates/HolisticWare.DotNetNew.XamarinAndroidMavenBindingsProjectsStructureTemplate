@@ -5,7 +5,7 @@
 <package>
   <metadata>
     <id>HolisticWare.DotNetNew.XamarinAndroidMavenBindingsProjectsStructureTemplate.CSharp</id>
-    <version>0.0.0</version>
+    <version>0.0.0.0</version>
     <description>
       Creates folder structure/layout for Xamarin cross-platform libraries and bindings
     </description>

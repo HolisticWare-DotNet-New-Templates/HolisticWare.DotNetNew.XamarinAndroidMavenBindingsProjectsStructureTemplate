@@ -42,6 +42,8 @@ dotnet new \
     --output Demo
 
 tree Demo
+
+dotnet build tests/Demo/Demo.XamarinAndroid.Maven.Bindings.csproj
 ```
 
 Full uninstall, install for (lazy butts like me)
@@ -65,6 +67,105 @@ dotnet new \
     --output tests/Demo
 
 tree tests/Demo
+
+dotnet build tests/Demo/Demo.XamarinAndroid.Maven.Bindings.csproj
+```
+
+
+
+```
+dotnet cake
+dotnet new --uninstall \
+    HolisticWare.DotNetNew.XamarinAndroidMavenBindingsProjectsStructureTemplate.CSharp
+
+dotnet new --install $(find ./output/nuget/*.nupkg)
+
+rm -fr tests/Demo
+dotnet new \
+    hw-structure-android-maven-bindings \
+    --NugetId UserInputNugetId \
+    --NugetVersion UserInputNugetVersion \
+    --MavenGroupId com.google.crypto.tink \
+    --MavenArtifactId tink-android \
+    --MavenArtifactVersion 1.6.1 \
+    --output tests/Demo
+
+tree tests/Demo
+
+dotnet build tests/Demo/Demo.XamarinAndroid.Maven.Bindings.csproj
+```
+
+```
+dotnet cake
+tree ./output/dotnet/nuget-structure/content/
+tree ./output/nuget/nuget-structure/content/
+
+dotnet new --uninstall \
+    HolisticWare.DotNetNew.XamarinAndroidMavenBindingsProjectsStructureTemplate.CSharp
+
+dotnet new --install $(find ./output/nuget/*.nupkg)
+
+rm -fr tests/Demo
+dotnet new \
+    hw-structure-android-maven-bindings \
+    --NugetId UserInputNugetId \
+    --NugetVersion UserInputNugetVersion \
+    --MavenGroupId androidx.startup \
+    --MavenArtifactId startup-runtime \
+    --MavenArtifactVersion 1.0.0 \
+    --output tests/Demo
+
+tree tests/Demo
+
+dotnet build tests/Demo/Demo.XamarinAndroid.Maven.Bindings.csproj
+```
+
+After publishing:
+
+```
+dotnet new --uninstall \
+    HolisticWare.DotNetNew.XamarinAndroidMavenBindingsProjectsStructureTemplate.CSharp
+
+dotnet new --install \
+    HolisticWare.DotNetNew.XamarinAndroidMavenBindingsProjectsStructureTemplate.CSharp
+
+rm -fr tests/Demo
+dotnet new \
+    hw-structure-android-maven-bindings \
+    --NugetId UserInputNugetId \
+    --NugetVersion UserInputNugetVersion \
+    --MavenGroupId androidx.startup \
+    --MavenArtifactId startup-runtime \
+    --MavenArtifactVersion 1.0.0 \
+    --output tests/Demo
+
+tree tests/Demo
+
+dotnet build tests/Demo/Demo.XamarinAndroid.Maven.Bindings.csproj
+
+```
+
+
+```
+dotnet new --uninstall \
+    HolisticWare.DotNetNew.XamarinAndroidMavenBindingsProjectsStructureTemplate.CSharp
+
+dotnet new --install \
+    HolisticWare.DotNetNew.XamarinAndroidMavenBindingsProjectsStructureTemplate.CSharp
+
+rm -fr tests/Demo
+dotnet new \
+    hw-structure-android-maven-bindings \
+    --NugetId UserInputNugetId \
+    --NugetVersion UserInputNugetVersion \
+    --MavenGroupId com.google.crypto.tink \
+    --MavenArtifactId tink-android \
+    --MavenArtifactVersion 1.6.1 \
+    --output tests/Demo
+
+tree tests/Demo
+
+dotnet build tests/Demo/Demo.XamarinAndroid.Maven.Bindings.csproj
 
 ```
 

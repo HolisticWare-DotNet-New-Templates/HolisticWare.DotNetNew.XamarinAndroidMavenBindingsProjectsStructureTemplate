@@ -1,6 +1,10 @@
 <Project Sdk="Xamarin.Legacy.Sdk">
   <PropertyGroup>
+    <TargetFrameworks>monoandroid11.0;monoandroid12.0;net6.0-android30.0</TargetFrameworks>
+    <!--
+    <TargetFrameworks>monoandroid11.0;monoandroid12.0;net6.0-android31.0</TargetFrameworks>
     <TargetFrameworks>MonoAndroid9.0;monoandroid10.0;monoandroid11.0;net6.0-android30.0</TargetFrameworks>
+    -->
     <IsBindingProject>true</IsBindingProject>
     <AndroidClassParser>class-parse</AndroidClassParser>
     <AndroidCodegenTarget>XAJavaInterop1</AndroidCodegenTarget>
@@ -43,6 +47,7 @@
     <Authors>HolisticWare, Xamarin, Microsoft</Authors>
     <Owners>HolisticWare, Xamarin, Microsoft</Owners>
     <Copyright>HolisticWare, Xamarin, Microsoft</Copyright>
+    <PackageType>Template</PackageType>
     <PackageIconUrl>https://holisticware.net</PackageIconUrl>
     <PackageProjectUrl>https://holisticware.net</PackageProjectUrl>
     <PackageLicenseUrl>https://holisticware.net</PackageLicenseUrl>
@@ -55,8 +60,9 @@
     <IsPackable>true</IsPackable>
     <PackOnBuild>true</PackOnBuild>
     <IncludeContentInPack>true</IncludeContentInPack>
+    <ContentTargetFolders>content</ContentTargetFolders>
   </PropertyGroup>
-
+  
   <ItemGroup>
     <Folder Include="Artifacts\" />
     <Folder Include="Artifacts\JARs\" />
@@ -67,8 +73,24 @@
 
   <ItemGroup>
     <TransformFile Include="Transforms\*.xml" />
-    <EmbeddedJar Include=".\Artifacts\JARs\*.jar" Link="Artifacts\JARs\%(Filename)%(Extension)" />
-    <LibraryProjectZip Include=".\Artifacts\AARs\*.aar" Link=".\Artifacts\AARs\%(Filename)%(Extension)" />
+    <EmbeddedJar 
+      Include=".\Artifacts\JARs\*.jar" 
+      Link="Artifacts\JARs\%(Filename)%(Extension)" 
+      />
+    <LibraryProjectZip 
+      Include=".\Artifacts\AARs\*.aar" 
+      Link=".\Artifacts\AARs\%(Filename)%(Extension)" 
+      />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <!--
+      Bug currently fixed in 16.11 
+      https://github.com/xamarin/java.interop/pull/851
+    -->
+    <JavaDocJar Remove="Artifacts\JARs\javadocs\*.jar" />
+    <JavaSourceJar Remove="Artifacts\JARs\sources\*.jar" />
   </ItemGroup>
 
   <ItemGroup>
@@ -76,7 +98,9 @@
       PrivateAssets="All" is essential. This prevents these build-only dependencies
       from ending up in the NuGet package's list of dependencies.
       -->
+      <!--
       <PackageReference Include="HolisticWare.DotNetNew.XamarinAndroid.Maven.Bindings.MsBuild.Tasks.Custom" PrivateAssets="All" />
+      -->
   </ItemGroup>
 
 </Project>
