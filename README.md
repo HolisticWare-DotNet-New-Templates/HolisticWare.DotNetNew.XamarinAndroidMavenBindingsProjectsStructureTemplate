@@ -124,6 +124,10 @@ dotnet build tests/Demo/Demo.XamarinAndroid.Maven.Bindings.csproj
 
 After publishing:
 
+## ReInstall from NuGet.org and test
+
+MacOSX or Linux:
+
 ```
 dotnet new --uninstall \
     HolisticWare.DotNetNew.XamarinAndroidMavenBindingsProjectsStructureTemplate.CSharp
@@ -134,11 +138,39 @@ dotnet new --install \
 rm -fr tests/Demo
 dotnet new \
     hw-structure-android-maven-bindings \
+    --TargetFrameworks "MonoAndroid9.0;monoandroid10.0;monoandroid11.0;net6.0-android30.0" \
+    --NET.SDK Xamarin.Legacy.Sdk \
     --NugetId UserInputNugetId \
     --NugetVersion UserInputNugetVersion \
     --MavenGroupId androidx.startup \
     --MavenArtifactId startup-runtime \
     --MavenArtifactVersion 1.0.0 \
+    --output tests/Demo
+
+tree tests/Demo
+
+dotnet build tests/Demo/Demo.XamarinAndroid.Maven.Bindings.csproj
+
+```
+Windows:
+
+```
+dotnet new --uninstall `
+    HolisticWare.DotNetNew.XamarinAndroidMavenBindingsProjectsStructureTemplate.CSharp
+
+dotnet new --install `
+    HolisticWare.DotNetNew.XamarinAndroidMavenBindingsProjectsStructureTemplate.CSharp
+
+rm -fr tests/Demo
+dotnet new `
+    hw-structure-android-maven-bindings `
+    --TargetFrameworks "MonoAndroid9.0;monoandroid10.0;monoandroid11.0;net6.0-android30.0" `
+    --NET.SDK Xamarin.Legacy.Sdk `
+    --NugetId UserInputNugetId `
+    --NugetVersion UserInputNugetVersion `
+    --MavenGroupId androidx.startup `
+    --MavenArtifactId startup-runtime `
+    --MavenArtifactVersion 1.0.0 `
     --output tests/Demo
 
 tree tests/Demo
