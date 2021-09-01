@@ -178,4 +178,4 @@ Move-Item `
     -Path downloaded-artifacts/google/*.pom `
     -Destination Artifacts/POMs/
 
-# Remove-Item -Recurse -Force downloaded-artifacts/
+Remove-Item -Recurse -Force downloaded-artifacts/
