@@ -2,13 +2,34 @@
 # Write-Host "Windows / Unix / MacOSX";
 # "Windows / Unix / MacOSX";
 
-$MAVEN_GROUP_ID="com.google.crypto.tink"
-$MAVEN_ARTIFACT_ID="tink-android"
-$MAVEN_ARTIFACT_VERSION="1.6.1"
+try 
+{
+    hw-verbindungsstappler `
+    search `
+        --MavenGroupId _PlaceholderMavenGroupId_ `
+        --MavenArtifactId _PlaceholderMavenArtifactId_ `
+        --MavenArtifactId _PlaceholderMavenArtifactId_ `
+}
+catch 
+{
+    Write-Host  "dotnet tool" 
+    Write-Host  "    hw-verbindungsstappler"
+    Write-Host  "not found" 
 
-# $MAVEN_GROUP_ID="_PlaceholderMavenGroupId_"
-# $MAVEN_ARTIFACT_ID="_PlaceholderMavenArtifactId_"
-# $MAVEN_ARTIFACT_VERSION="_PlaceholderMavenArtifactVersion_"
+    Write-Host  "please run" 
+    Write-Host  "    dotnet tool --global install "
+    Write-Host  "not found" 
+
+}
+# $MAVEN_GROUP_ID="com.google.crypto.tink"
+# $MAVEN_ARTIFACT_ID="tink-android"
+# $MAVEN_ARTIFACT_VERSION="1.6.1"
+
+$MAVEN_GROUP_ID="_PlaceholderMavenGroupId_"
+$MAVEN_ARTIFACT_ID="_PlaceholderMavenArtifactId_"
+$MAVEN_ARTIFACT_VERSION="_PlaceholderMavenArtifactVersion_"
+$NUGET_ID="_PlaceholderNugetID_"
+$NUGET_VERSION="_PlaceholderNugetVersion_"
 
 $URL_PART_MAVEN_GROUP_ID= $MAVEN_GROUP_ID -replace "\.",  "/"
 

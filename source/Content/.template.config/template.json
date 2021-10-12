@@ -52,7 +52,8 @@
         "NET.SDK" : 
         {
           "type": "parameter",
-          "defaultValue": "Xamarin.Legacy.Sdk",
+          "defaultValue": "Xamarin.Legacy.Sdk",          
+          //"defaultValue": "MSBuild.Sdk.Extras",
           //"defaultValue": "Microsoft.NET.Sdk",
           "replaces":"_Placeholder_NET_SDK_",
           "isRequired": false

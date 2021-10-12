@@ -1,0 +1,40 @@
+[
+  {
+    "mavenRepositoryType": "Google",
+    "slnFile": "generated/_Placeholder_.sln",
+    "strictRuntimeDependencies": true,
+    "additionalProjects": 
+    [
+    ],
+    "templates": 
+    [
+      {
+        "templateFile": "source/Targets.cshtml",
+        "outputFileRule": "generated/{groupid}.{artifactid}/{nugetid}.targets"
+      },
+      {
+        "templateFile": "source/Project.cshtml",
+        "outputFileRule": "generated/{groupid}.{artifactid}/{groupid}.{artifactid}.csproj"
+      },
+      {
+        "templateFile": "source/Pom.cshtml",
+        "outputFileRule": "generated/{groupid}.{artifactid}/dependencies.pom"
+      },
+      {
+        "templateFile": "source/SolutionFilter.cshtml",
+        "outputFileRule": "generated/{groupid}.{artifactid}/{groupid}.{artifactid}.slnf"
+      }
+    ],
+    "artifacts": 
+    [
+      {
+        "groupId": "_PlaceholderMavenGroupId_",
+        "artifactId": "_PlaceholderMavenArtifactId_",
+        "version": "_PlaceholderMavenArtifactVersion_",
+        "nugetVersion": "_PlaceholderNugetVersion_",
+        "nugetId": "_PlaceholderNugetId_",
+        "dependencyOnly": false
+      }
+    ]
+  }
+]
