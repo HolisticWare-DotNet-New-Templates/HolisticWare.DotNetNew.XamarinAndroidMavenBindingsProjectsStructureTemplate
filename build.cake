@@ -184,8 +184,8 @@ Task ("pack-with-dotnet-pack")
         () =>
         {
 			// not packing though <PackOnBuild>true</PackOnBuild>
-			DotNetCoreBuild("./source/TemplatePackaging/TemplatePackagingProject/TemplatePackagingProject.csproj");	
-			DotNetCorePack("./source/TemplatePackaging/TemplatePackagingProject/TemplatePackagingProject.csproj");	
+			DotNetBuild("./source/TemplatePackaging/TemplatePackagingProject/TemplatePackagingProject.csproj");	
+			DotNetPack("./source/TemplatePackaging/TemplatePackagingProject/TemplatePackagingProject.csproj");	
 
 			string nupkg = GetFiles($"./output/dotnet/{nuget_id}.*.nupkg")
 											.FirstOrDefault()
